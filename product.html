@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Merssh jewelry details and product photography." />
+  <title>Shop jewelry | Merssh</title>
+  <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="footer.css">
+  <script src="common.js" defer></script>
+  <script src="product-page.js" defer></script>
+  <script src="scroll-reveal.js" defer></script>
+</head>
+
+<body>
+  <div class="site-shell">
+    <div class="announcement-bar">Free shipping on orders over $150 • exciting free gift above $250</div>
+
+    <header class="container topbar" aria-label="Main navigation">
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false"
+        aria-label="Open menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <div class="brand" aria-label="Merssh home">
+        <span class="logo"><a href="index.html#top"><img src="assets/logo.png" alt="Merssh home"></a></span>
+      </div>
+      <nav class="main-nav" id="main-navigation" aria-label="Top navigation">
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="new-in.html">New in</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle New In collections"
+              aria-controls="new-in-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="new-in-dropdown" role="group" aria-label="New In collections">
+            <a href="new-in.html">Men</a>
+            <a href="new-in.html">Female</a>
+          </div>
+        </div>
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="Ring.html">Rings</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle Ring collections"
+              aria-controls="rings-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="rings-dropdown" role="group" aria-label="Ring collections">
+            <a href="Ring.html">Men</a>
+            <a href="Ring.html">Female</a>
+          </div>
+        </div>
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="Necklace.html">Necklaces</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle Necklace collections"
+              aria-controls="necklaces-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="necklaces-dropdown" role="group" aria-label="Necklace collections">
+            <a href="Necklace.html">Men</a>
+            <a href="Necklace.html">Female</a>
+          </div>
+        </div>
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="Bracelet.html">Bracelets</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle Bracelet collections"
+              aria-controls="bracelets-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="bracelets-dropdown" role="group" aria-label="Bracelet collections">
+            <a href="Bracelet.html">Men</a>
+            <a href="Bracelet.html">Female</a>
+          </div>
+        </div>
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="earing.html">Earings</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle Shop collections"
+              aria-controls="shop-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="shop-dropdown" role="group" aria-label="Shop collections">
+            <a href="earing.html">Men</a>
+            <a href="earing.html">Female</a>
+          </div>
+        </div>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-button profile-button" href="profile.html" aria-label="Your profile" title="Profile">
+          <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0"></path></svg>
+        </a>
+        <button class="icon-button search-button" type="button" aria-label="Search products">⌕</button>
+        <a class="icon-button cart-button" href="cart.html" aria-label="Shopping bag, 0 items">
+          <span aria-hidden="true">👜</span><span class="cart-count" aria-hidden="true">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="container product-detail-page">
+      <nav class="product-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span aria-hidden="true">/</span><a href="index.html#products">Jewelry</a>
+        <span aria-hidden="true">/</span><span id="breadcrumb-product">Product</span>
+      </nav>
+
+      <div class="product-detail-layout" id="product-detail" aria-live="polite">
+        <section class="product-gallery" aria-label="Product photos">
+          <div class="product-gallery-grid" id="product-gallery-grid"></div>
+          <div class="product-gallery-pagination" id="product-gallery-pagination" role="group"
+            aria-label="Choose a product photo"></div>
+          <p class="product-gallery-count" id="product-gallery-count" aria-live="polite"></p>
+        </section>
+
+        <section class="product-detail-copy" aria-labelledby="product-title">
+          <p class="eyebrow" id="product-category"></p>
+          <div class="product-detail-heading">
+            <h1 id="product-title"></h1>
+            <p class="product-detail-price" id="product-price"></p>
+          </div>
+
+          <p class="product-detail-material" id="product-material"></p>
+          <p class="product-detail-intro" id="product-description"></p>
+
+          <div class="product-detail-purchase">
+            <div class="product-quantity" aria-label="Quantity">
+              <button type="button" id="quantity-decrease" aria-label="Decrease quantity">−</button>
+              <output id="product-quantity" aria-live="polite">1</output>
+              <button type="button" id="quantity-increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="product-detail-add add-to-bag" id="product-add-to-bag" type="button">Add to bag</button>
+          </div>
+          <p class="product-detail-status" id="product-status" role="status" aria-live="polite"></p>
+          <p class="product-stock-note"><span aria-hidden="true"></span> Ready to make yours</p>
+
+          <div class="product-detail-accordions">
+            <details class="product-accordion" open>
+              <summary>About this piece <span aria-hidden="true"></span></summary>
+              <div class="product-accordion-content">
+                <ul class="product-detail-highlights" id="product-highlights"></ul>
+              </div>
+            </details>
+            <details class="product-accordion">
+              <summary>Shipping and returns <span aria-hidden="true"></span></summary>
+              <div class="product-accordion-content">
+                <p class="product-detail-shipping">Complimentary shipping on orders over $150. Your piece arrives in gift-ready packaging.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+      </div>
+
+      <section class="product-not-found" id="product-not-found" hidden>
+        <h1>We couldn't find that piece.</h1>
+        <p>Browse the collection to discover your next favorite.</p>
+        <a class="cta-button" href="index.html#products">Explore the collection</a>
+      </section>
+
+      <section class="section product-recommendations" id="product-recommendations"
+        aria-labelledby="recommendations-heading" hidden>
+        <div class="section-header">
+          <h2 id="recommendations-heading">You may also like.</h2>
+          <a class="label-link" href="index.html#products">View all pieces</a>
+        </div>
+        <div class="products-grid" id="recommended-products"></div>
+      </section>
+    </main>
+    <div class="product-mobile-buybar" id="product-mobile-buybar" aria-label="Quick add to bag">
+      <div class="product-mobile-buybar-copy">
+        <span id="product-mobile-name"></span>
+        <strong id="product-mobile-price"></strong>
+      </div>
+      <button class="product-detail-add add-to-bag" id="product-mobile-add" type="button">Add to bag</button>
+    </div>
+
+    <footer class="merssh-footer" id="merssh-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="logo.png" alt="MERSSH Jewellery">
+          </a>
+          <h3 class="footer-tagline">Timeless jewellery for the modern you.</h3>
+          <p class="footer-description">Crafted with love, designed for your special moments.</p>
+          <div class="footer-socials">
+            <a href="https://instagram.com/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="18" cy="6" r="1" class="social-dot" />
+              </svg>
+            </a>
+            <a href="https://facebook.com/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 21v-8h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.4A23 23 0 0 0 15 1c-3 0-5 1.8-5 5v3H7v4h3v8z" />
+              </svg>
+            </a>
+            <a href="https://pinterest.com/" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2a10 10 0 0 0-3.6 19.3c0-.8 0-1.8.2-2.7l1.3-5.5s-.3-.7-.3-1.7c0-1.6.9-2.8 2.1-2.8 1 0 1.5.8 1.5 1.7 0 1-.7 2.5-1 3.9-.3 1.2.6 2.1 1.8 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.4 0-5.4 2.5-5.4 5.1 0 1 .4 2.1 1 2.7.1.2.2.3.1.6l-.4 1.3c-.1.4-.3.4-.7.3-1.5-.7-2.4-2.8-2.4-4.5 0-3.7 2.7-7.1 7.9-7.1 4.1 0 7.3 2.9 7.3 6.8 0 4.1-2.6 7.4-6.2 7.4-1.2 0-2.4-.7-2.8-1.5l-.8 3a11 11 0 0 1-1.2 2.5A10 10 0 1 0 12 2z" />
+              </svg>
+            </a>
+            <a href="https://youtube.com/" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M23 7a3 3 0 0 0-2-2C19.2 4.5 12 4.5 12 4.5s-7.2 0-9 .5a3 3 0 0 0-2 2A31 31 0 0 0 .5 12 31 31 0 0 0 1 17a3 3 0 0 0 2 2c1.8.5 9 .5 9 .5s7.2 0 9-.5a3 3 0 0 0 2-2 31 31 0 0 0 .5-5A31 31 0 0 0 23 7zM9.5 15.5v-7l6 3.5z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <button class="footer-heading" type="button" aria-expanded="true">SHOP <span
+              class="footer-toggle">+</span></button>
+          <ul class="footer-links">
+            <li><a href="necklaces.html">Necklaces</a></li>
+            <li><a href="earrings.html">Earrings</a></li>
+            <li><a href="rings.html">Rings</a></li>
+            <li><a href="bracelets.html">Bracelets</a></li>
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="gift-cards.html">Gift Cards</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <button class="footer-heading" type="button" aria-expanded="true">CUSTOMER CARE <span
+              class="footer-toggle">+</span></button>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping &amp; Returns</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="track-order.html">Track Your Order</a></li>
+            <li><a href="care-guide.html">Jewellery Care Guide</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-promises">
+        <div class="promise-item">
+          <svg viewBox="0 0 40 40">
+            <path d="M3 15 12 4h16l9 11-17 21zM3 15h34M12 4l8 32 8-32M12 4l8 11 8-11" />
+          </svg>
+          <div>
+            <h4>Premium Quality</h4>
+            <p>Only the finest materials</p>
+          </div>
+        </div>
+        <div class="promise-item">
+          <svg viewBox="0 0 40 40">
+            <path
+              d="M3 9h22v21H3zM25 16h7l6 7v7H25zM9 34a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM31 34a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+          </svg>
+          <div>
+            <h4>Free Shipping</h4>
+            <p>On orders above ₹999</p>
+          </div>
+        </div>
+        <div class="promise-item">
+          <svg viewBox="0 0 40 40">
+            <path d="M20 3 35 9v10c0 9-6 15-15 19C11 34 5 28 5 19V9zM13 20l5 5 10-11" />
+          </svg>
+          <div>
+            <h4>Secure Payments</h4>
+            <p>Safe &amp; encrypted checkout</p>
+          </div>
+        </div>
+        <div class="promise-item">
+          <svg viewBox="0 0 40 40">
+            <path d="M20 35 5 21C-3 11 8 1 17 8l3 4 3-4c9-7 20 3 12 13z" />
+          </svg>
+          <div>
+            <h4>Dedicated Support</h4>
+            <p>We're here to help</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="footer-year"></span> MERSSH. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="refund-policy.html">Refund Policy</a>
+        </div>
+      </div>
+    </footer>
+    <script src="footer.js" defer></script>
+    <script type="module" src="firebase-init.js"></script>
+  </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,510 @@
+@font-face {
+  font-family: 'TheSeason';
+  src: url("assets/The-Seasons-Font/The-Seasons-Font/WOFF2/The Seasons Bold.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'DM';
+  src: url(assets/DM_Sans/DMSans-VariableFont_opsz,wght.ttf) format(wght);
+}
+
+:root {
+  --bg: #f3efe9;
+  --panel: #f8f5f0;
+  --ink: #221d1a;
+  --muted: #5f5249;
+  --line: rgba(34, 29, 26, 0.12);
+  --accent: #b38a5b;
+  --accent-deep: #785a3b;
+  --success: #4a7c59;
+  --warning: #b8860b;
+  --danger: #8b3a3a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.admin-header {
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-header h1 {
+  font-family: 'TheSeason', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.admin-header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-header-actions button,
+.admin-header-actions a {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: 'DM', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.admin-header-actions button:hover,
+.admin-header-actions a:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.admin-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-family: 'DM', sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.tab-btn.active {
+  color: var(--ink);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-header h2 {
+  font-family: 'TheSeason', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.btn-primary {
+  padding: 0.6rem 1.25rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  font-family: 'DM', sans-serif;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-deep);
+}
+
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-family: 'DM', sans-serif;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--panel);
+}
+
+.btn-danger {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(139, 58, 58, 0.3);
+  font-family: 'DM', sans-serif;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+.products-table,
+.orders-table {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+
+@media (min-width: 968px) {
+  .products-table,
+  .orders-table {
+    display: table;
+  }
+}
+
+.products-table thead,
+.orders-table thead {
+  background: rgba(179, 138, 91, 0.08);
+}
+
+.products-table th,
+.orders-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.products-table td,
+.orders-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.products-table tbody tr:hover,
+.orders-table tbody tr:hover {
+  background: rgba(179, 138, 91, 0.04);
+}
+
+.product-image-cell img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(34, 29, 26, 0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--panel);
+  margin: 2rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  position: relative;
+}
+
+.modal-large {
+  max-width: 800px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.modal-header h3 {
+  font-family: 'TheSeason', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: 'DM', sans-serif;
+  font-size: 0.9rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.order-details {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.order-section h4 {
+  font-family: 'TheSeason', serif;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.order-section p {
+  margin-bottom: 0.4rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.order-section p strong {
+  color: var(--ink);
+}
+
+.order-items {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.order-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.order-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.order-item-info {
+  flex: 1;
+}
+
+.order-item-info h5 {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.order-item-info p {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-pending {
+  background: rgba(184, 134, 11, 0.15);
+  color: var(--warning);
+}
+
+.status-confirmed {
+  background: rgba(74, 124, 89, 0.15);
+  color: var(--success);
+}
+
+.status-shipped {
+  background: rgba(179, 138, 91, 0.15);
+  color: var(--accent-deep);
+}
+
+.status-delivered {
+  background: rgba(74, 124, 89, 0.25);
+  color: var(--success);
+}
+
+.status-cancelled {
+  background: rgba(139, 58, 58, 0.15);
+  color: var(--danger);
+}
+
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.auth-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 2.5rem;
+  max-width: 400px;
+  width: 100%;
+}
+
+.auth-card h1 {
+  font-family: 'TheSeason', serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.auth-card p {
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.auth-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  font-family: 'DM', sans-serif;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.auth-form button:hover {
+  background: var(--accent-deep);
+}
+
+.auth-error {
+  color: var(--danger);
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  text-align: center;
+  min-height: 1.25rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 1rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content {
+    margin: 1rem;
+    max-height: 95vh;
+  }
+}

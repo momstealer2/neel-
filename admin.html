@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Merssh</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- Auth Screen -->
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <h1>Merssh Admin</h1>
+      <p>Sign in to manage your store</p>
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="adminEmail">Email</label>
+          <input type="email" id="adminEmail" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" required autocomplete="current-password">
+        </div>
+        <button type="submit">Sign In</button>
+        <div id="authError" class="auth-error"></div>
+        <p style="font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center;">Max 5 attempts • 30 min lockout on failure</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="adminPanel" class="hidden">
+    <header class="admin-header">
+      <h1>Merssh Admin Panel</h1>
+      <div class="admin-header-actions">
+        <span id="adminUserEmail" style="color: var(--muted); font-size: 0.9rem;"></span>
+        <a href="index.html" target="_blank">View Site</a>
+        <a href="profile.html">Profile</a>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <div class="admin-container">
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="products">Products</button>
+        <button class="tab-btn" data-tab="orders">Orders</button>
+        <button class="tab-btn" data-tab="customers">Customer Activity</button>
+      </div>
+
+      <!-- Products Tab -->
+      <div id="productsTab" class="tab-content active">
+        <div class="section-header">
+          <h2>Manage Products</h2>
+          <button class="btn-primary" id="addProductBtn">+ Add New Product</button>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Material</th>
+                <th>Price (USD)</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orders Tab -->
+      <div id="ordersTab" class="tab-content">
+        <div class="section-header">
+          <h2>Customer Orders</h2>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Customer Activity Tab -->
+      <div id="customersTab" class="tab-content">
+        <div class="section-header">
+          <h2>Customer Activity</h2>
+        </div>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Overview of all customers with their location and order history</p>
+        <div style="overflow-x: auto;">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Location/Address</th>
+                <th>Total Orders</th>
+                <th>Total Spent</th>
+                <th>Last Order</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="customersTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="productModalTitle">Add Product</h3>
+        <button class="modal-close" id="closeProductModal">&times;</button>
+      </div>
+      <form id="productForm">
+        <div class="modal-body">
+          <input type="hidden" id="productDocId">
+          <div class="form-group">
+            <label for="productId">Product ID (URL slug)</label>
+            <input type="text" id="productId" placeholder="e.g., aurora-ring" required>
+            <small style="color: var(--muted); font-size: 0.8rem;">Used in product.html?id=...</small>
+          </div>
+          <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productCategory">Category</label>
+              <input type="text" id="productCategory" placeholder="e.g., The everyday edit">
+            </div>
+            <div class="form-group">
+              <label for="productMaterial">Material</label>
+              <input type="text" id="productMaterial" placeholder="e.g., 18k vermeil">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="productPrice">Price (USD)</label>
+            <input type="number" id="productPrice" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="productDescription">Description</label>
+            <textarea id="productDescription" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="productHighlights">Highlights (one per line)</label>
+            <textarea id="productHighlights" placeholder="18k gold vermeil finish&#10;Designed for everyday wear&#10;Complimentary gift-ready packaging"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="productImages">Image URLs (one per line)</label>
+            <textarea id="productImages" placeholder="assets/products/image.png&#10;https://example.com/image.jpg"></textarea>
+            <small style="color: var(--muted); font-size: 0.8rem;">First image will be used as the main display image</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancelProductBtn">Cancel</button>
+          <button type="submit" class="btn-primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Detail Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h3>Order Details</h3>
+        <button class="modal-close" id="closeOrderModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="order-details">
+          <div class="order-section">
+            <h4>Customer Information</h4>
+            <p><strong>Name:</strong> <span id="orderCustomerName"></span></p>
+            <p><strong>Email:</strong> <span id="orderCustomerEmail"></span></p>
+            <p><strong>Phone:</strong> <span id="orderCustomerPhone"></span></p>
+            <p><strong>Address:</strong> <span id="orderCustomerAddress"></span></p>
+          </div>
+          <div class="order-section">
+            <h4>Order Information</h4>
+            <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+            <p><strong>Date:</strong> <span id="orderDate"></span></p>
+            <p><strong>Status:</strong> <span id="orderStatus" class="status-badge"></span></p>
+            <p><strong>Subtotal:</strong> <span id="orderSubtotal"></span></p>
+            <p><strong>Shipping:</strong> <span id="orderShipping"></span></p>
+            <p><strong>Total:</strong> <span id="orderTotal"></span></p>
+          </div>
+          <div class="order-section">
+            <h4>Items Ordered</h4>
+            <div id="orderItems" class="order-items"></div>
+          </div>
+          <div class="order-section">
+            <h4>Update Status</h4>
+            <select id="orderStatusSelect" style="padding: 0.6rem; margin-bottom: 0.75rem; width: 200px;">
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <button class="btn-primary" id="updateOrderStatusBtn">Update Status</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User modal removed -->
+
+  <script type="module" src="admin-auth.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

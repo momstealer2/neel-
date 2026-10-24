@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your profile | Merssh</title>
+  <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="profile.css">
+  <script src="common.js" defer></script>
+  <script type="module" src="firebase-init.js"></script>
+  <script type="module" src="customer-auth.js"></script>
+  <script type="module" src="profile-page.js"></script>
+</head>
+
+<body>
+  <div class="site-shell">
+    <div class="announcement-bar">Free shipping on orders over &#8377;150 • exciting free gift above &#8377;250</div>
+
+    <header class="container topbar" aria-label="Main navigation">
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false"
+        aria-label="Open menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <div class="brand" aria-label="Merssh home">
+        <span class="logo"><a href="index.html"><img src="assets/logo.png" alt="Merssh home"></a></span>
+      </div>
+
+      <nav class="main-nav" id="main-navigation" aria-label="Top navigation">
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="new-in.html">New in</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle New In collections"
+              aria-controls="new-in-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="new-in-dropdown" role="group" aria-label="New In collections">
+            <a href="new-in.html">Men</a>
+            <a href="new-in.html">Female</a>
+          </div>
+        </div>
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="Ring.html">Rings</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle Ring collections"
+              aria-controls="rings-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="rings-dropdown" role="group" aria-label="Ring collections">
+            <a href="Ring.html">Men</a>
+            <a href="Ring.html">Female</a>
+          </div>
+        </div>
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="Necklace.html">Necklaces</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle Necklace collections"
+              aria-controls="necklaces-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="necklaces-dropdown" role="group" aria-label="Necklace collections">
+            <a href="Necklace.html">Men</a>
+            <a href="Necklace.html">Female</a>
+          </div>
+        </div>
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="Bracelet.html">Bracelets</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle Bracelet collections"
+              aria-controls="bracelets-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="bracelets-dropdown" role="group" aria-label="Bracelet collections">
+            <a href="Bracelet.html">Men</a>
+            <a href="Bracelet.html">Female</a>
+          </div>
+        </div>
+        <div class="nav-menu">
+          <div class="nav-menu-heading">
+            <a href="earing.html">Earings</a>
+            <button class="nav-menu-toggle" type="button" aria-label="Toggle Shop collections"
+              aria-controls="shop-dropdown" aria-expanded="false"><span aria-hidden="true">V</span></button>
+          </div>
+          <div class="nav-dropdown" id="shop-dropdown" role="group" aria-label="Shop collections">
+            <a href="earing.html">Men</a>
+            <a href="earing.html">Female</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="icon-button profile-button" href="profile.html" aria-label="Your profile" title="Profile"
+          aria-current="page">
+          <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0"></path></svg>
+        </a>
+        <button class="icon-button search-button" type="button" aria-label="Search products">⌕</button>
+        <a class="icon-button cart-button" href="cart.html" aria-label="Shopping bag, 0 items">👜<span
+            class="cart-count" aria-hidden="true">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="profile-page">
+      <!-- Customer Auth Section -->
+      <section id="customerAuthContainer" class="profile-card" aria-labelledby="auth-title" style="max-width: 460px; margin-left: auto; margin-right: auto;">
+        <div style="text-align: center; margin-bottom: 1.75rem;">
+          <h1 id="auth-title" style="font-family: 'TheSeason', serif; font-size: 1.9rem; margin-bottom: 0.5rem; font-weight: 600;">Sign in or create an account</h1>
+          <p class="profile-intro" style="margin: 0;">Enter your details to continue shopping</p>
+        </div>
+        
+        <div class="auth-tabs" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 1.75rem; border: 1px solid var(--line); padding: 3px; background: rgba(179, 138, 91, 0.06);">
+          <button class="auth-tab active" data-tab="signIn" style="padding: 0.6rem 0.8rem; background: var(--ink); border: none; color: white; font-family: 'DM', sans-serif; font-size: 0.875rem; cursor: pointer; transition: all 0.2s;">Log in</button>
+          <button class="auth-tab" data-tab="signUp" style="padding: 0.6rem 0.8rem; background: transparent; border: none; color: var(--muted); font-family: 'DM', sans-serif; font-size: 0.875rem; cursor: pointer; transition: all 0.2s;">Sign up</button>
+        </div>
+        
+        <!-- Sign In Tab -->
+        <div id="signInTab" class="auth-tab-content" style="display: block;">
+          <form id="signInForm">
+            <div style="margin-bottom: 1rem;">
+              <label for="signInEmail" style="display: block; margin-bottom: 0.45rem; font-size: 0.875rem; color: var(--ink);">Email</label>
+              <input id="signInEmail" type="email" autocomplete="email" required style="width: 100%; padding: 0.65rem 0.8rem; border: 1px solid var(--line); background: white; font-family: 'DM', sans-serif; font-size: 0.9rem; box-sizing: border-box;">
+            </div>
+            
+            <div style="margin-bottom: 1.25rem;">
+              <label for="signInPassword" style="display: block; margin-bottom: 0.45rem; font-size: 0.875rem; color: var(--ink);">Password</label>
+              <input id="signInPassword" type="password" autocomplete="current-password" required style="width: 100%; padding: 0.65rem 0.8rem; border: 1px solid var(--line); background: white; font-family: 'DM', sans-serif; font-size: 0.9rem; box-sizing: border-box;">
+            </div>
+            
+            <button type="submit" style="width: 100%; padding: 0.7rem; background: var(--ink); color: white; border: none; font-family: 'DM', sans-serif; font-size: 0.9rem; cursor: pointer;">Log in</button>
+            <p id="signInError" style="color: var(--danger); font-size: 0.85rem; margin-top: 0.9rem; min-height: 1.2rem; text-align: center;"></p>
+            <div style="margin-top: 1.25rem; text-align: center;">
+              <button type="button" id="googleSignInBtn" style="width: 100%; padding: 0.7rem; background: white; color: var(--ink); border: 1px solid var(--line); font-family: 'DM', sans-serif; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
+                <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                Continue with Google
+              </button>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--muted); margin-top: 1rem; text-align: center;">By continuing, you agree to our Terms & Privacy Policy</p>
+          </form>
+        </div>
+        
+        <!-- Sign Up Tab -->
+        <div id="signUpTab" class="auth-tab-content" style="display: none;">
+          <form id="signUpForm">
+            <div style="margin-bottom: 0.9rem;">
+              <label for="signUpName" style="display: block; margin-bottom: 0.45rem; font-size: 0.875rem; color: var(--ink);">Full name</label>
+              <input id="signUpName" type="text" autocomplete="name" required style="width: 100%; padding: 0.65rem 0.8rem; border: 1px solid var(--line); background: white; font-family: 'DM', sans-serif; font-size: 0.9rem; box-sizing: border-box;">
+            </div>
+            
+            <div style="margin-bottom: 0.9rem;">
+              <label for="signUpEmail" style="display: block; margin-bottom: 0.45rem; font-size: 0.875rem; color: var(--ink);">Email</label>
+              <input id="signUpEmail" type="email" autocomplete="email" required style="width: 100%; padding: 0.65rem 0.8rem; border: 1px solid var(--line); background: white; font-family: 'DM', sans-serif; font-size: 0.9rem; box-sizing: border-box;">
+            </div>
+            
+            <div style="margin-bottom: 0.9rem;">
+              <label for="signUpPhone" style="display: block; margin-bottom: 0.45rem; font-size: 0.875rem; color: var(--ink);">Mobile number</label>
+              <input id="signUpPhone" type="tel" autocomplete="tel" required style="width: 100%; padding: 0.65rem 0.8rem; border: 1px solid var(--line); background: white; font-family: 'DM', sans-serif; font-size: 0.9rem; box-sizing: border-box;">
+            </div>
+            
+            <div style="margin-bottom: 0.9rem;">
+              <label for="signUpPassword" style="display: block; margin-bottom: 0.45rem; font-size: 0.875rem; color: var(--ink);">Password</label>
+              <input id="signUpPassword" type="password" autocomplete="new-password" required style="width: 100%; padding: 0.65rem 0.8rem; border: 1px solid var(--line); background: white; font-family: 'DM', sans-serif; font-size: 0.9rem; box-sizing: border-box;">
+              <p style="font-size: 0.75rem; color: var(--muted); margin-top: 0.35rem;">Minimum 6 characters</p>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <label for="signUpConfirmPassword" style="display: block; margin-bottom: 0.45rem; font-size: 0.875rem; color: var(--ink);">Confirm password</label>
+              <input id="signUpConfirmPassword" type="password" autocomplete="new-password" required style="width: 100%; padding: 0.65rem 0.8rem; border: 1px solid var(--line); background: white; font-family: 'DM', sans-serif; font-size: 0.9rem; box-sizing: border-box;">
+            </div>
+            
+            <div style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.6rem;">
+              <input type="checkbox" id="enable2FAOnSignup" style="margin-top: 0.2rem;">
+              <label for="enable2FAOnSignup" style="font-size: 0.85rem; color: var(--ink); line-height: 1.4;">Enable Email Two-Factor Authentication for added security</label>
+            </div>
+            
+            <button type="submit" style="width: 100%; padding: 0.7rem; background: var(--ink); color: white; border: none; font-family: 'DM', sans-serif; font-size: 0.9rem; cursor: pointer;">Sign up</button>
+            <p id="signUpError" style="font-size: 0.85rem; margin-top: 0.9rem; min-height: 1.2rem; text-align: center;"></p>
+            <div style="margin-top: 1rem; text-align: center;">
+              <button type="button" id="googleSignUpBtn" style="width: 100%; padding: 0.7rem; background: white; color: var(--ink); border: 1px solid var(--line); font-family: 'DM', sans-serif; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
+                <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                Sign up with Google
+              </button>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--muted); margin-top: 0.9rem; text-align: center;">By signing up, you agree to our Terms & Privacy Policy</p>
+          </form>
+        </div>
+      </section>
+
+      <!-- Customer 2FA Modal -->
+      <div id="customer2FAModal" class="modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(34, 29, 26, 0.75); align-items: center; justify-content: center;">
+        <div class="modal-content" style="max-width: 440px; background: var(--panel); margin: 1rem; width: 90%; border: 1px solid var(--line); box-shadow: 0 20px 60px rgba(34, 29, 26, 0.3);">
+          <div class="modal-header" style="padding: 1.75rem 1.75rem 1rem; text-align: center; border-bottom: none;">
+            <h3 style="font-family: 'TheSeason', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">Two-Factor Authentication</h3>
+            <p style="color: var(--muted); font-size: 0.9rem;">Secure login verification</p>
+          </div>
+          <div class="modal-body" style="padding: 0 1.75rem 1.75rem;">
+            <p style="color: var(--muted); margin-bottom: 1rem; font-size: 0.9rem; text-align: center;">We've sent a verification code to your registered email address.</p>
+            <div style="background: rgba(179, 138, 91, 0.08); padding: 0.75rem; border: 1px solid var(--line); margin-bottom: 1.25rem; text-align: center;">
+              <span style="font-size: 0.875rem; color: var(--ink);"><strong id="customer2FAEmail"></strong></span>
+            </div>
+            <button id="sendCustomer2FACode" class="btn-primary" style="width: 100%; padding: 0.7rem; background: var(--accent); color: white; border: none; font-family: 'DM', sans-serif; cursor: pointer;">Send Verification Code</button>
+            <p id="sendCustomer2FAMsg" style="margin-top: 0.9rem; font-size: 0.875rem; min-height: 1.2rem; text-align: center;"></p>
+            <div id="customer2FACodeWrap" style="margin-top: 1.25rem; display: none;">
+              <label for="customer2FACodeInput" style="display: block; margin-bottom: 0.6rem; font-size: 0.9rem; text-align: center; font-weight: 500;">Enter 6-Digit Code</label>
+              <input id="customer2FACodeInput" type="text" maxlength="6" inputmode="numeric" style="text-align: center; letter-spacing: 0.8rem; font-size: 1.4rem; padding: 0.8rem; width: 100%; border: 1px solid var(--line); background: var(--bg); font-family: 'DM', sans-serif; box-sizing: border-box; font-weight: 600;">
+              <button id="verifyCustomer2FACode" class="btn-primary" style="width: 100%; margin-top: 1rem; padding: 0.7rem; background: var(--accent); color: white; border: none; font-family: 'DM', sans-serif; cursor: pointer;">Verify & Continue</button>
+            </div>
+            <p id="customer2FAVerifyMsg" style="margin-top: 0.9rem; font-size: 0.875rem; min-height: 1.2rem; text-align: center;"></p>
+            <p style="font-size: 0.75rem; color: var(--muted); margin-top: 1rem; text-align: center;">Code expires in 5 minutes • Maximum 5 attempts</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="profile-card" aria-labelledby="profile-title">
+        <div id="profile-login-required" style="text-align: center; padding: 2rem 1rem;">
+          <p style="font-size: 1.1rem; color: var(--ink); margin-bottom: 0.75rem;">Please sign in to access your profile</p>
+          <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem;">You need to be logged in to view and manage your account details.</p>
+          <button onclick="document.getElementById('customerAuthContainer').scrollIntoView({behavior:'smooth'}); document.querySelector('.auth-tab[data-tab=\"signIn\"]').click();" style="padding: 0.7rem 1.75rem; background: var(--ink); color: white; border: none; font-family: 'DM', sans-serif; cursor: pointer;">Sign In / Sign Up</button>
+        </div>
+        <div id="profile-content" style="display: none;">
+          <p class="eyebrow">Your Merssh account</p>
+          <h1 id="profile-title">Your profile.</h1>
+          <p class="profile-intro">Keep your details close for a more personal shopping experience.</p>
+          <form id="profile-form">
+            <label for="profile-name">Full name</label>
+            <input id="profile-name" name="name" type="text" autocomplete="name" required>
+
+            <label for="profile-email">Email address</label>
+            <input id="profile-email" name="email" type="email" autocomplete="email" required>
+
+            <label for="profile-phone">Phone number <span>(optional)</span></label>
+            <input id="profile-phone" name="phone" type="tel" autocomplete="tel">
+
+            <label for="profile-address">Shipping address <span>(optional)</span></label>
+            <textarea id="profile-address" name="address" rows="3" placeholder="House/Street, City, State, Pincode"></textarea>
+
+            <label for="profile-city">City / State / Postal Code <span>(optional)</span></label>
+            <input id="profile-city" name="city" type="text" placeholder="e.g., Mumbai, Maharashtra 400001">
+
+            <button type="submit">Save profile</button>
+            <p class="profile-status" id="profile-status" role="status" aria-live="polite"></p>
+          </form>
+          <p class="profile-note">Your profile is synced with your account.</p>
+        </div>
+      </section>
+
+      <section class="profile-card" style="margin-top: 1.5rem;" aria-labelledby="security-title">
+        <p class="eyebrow">Security</p>
+        <h2 id="security-title" style="font-family: 'TheSeason', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">Email-Based Two-Factor Authentication</h2>
+        <p class="profile-intro">Add an extra layer of security by verifying a one-time code sent to your registered email.</p>
+
+        <div style="margin-top: 1rem; padding: 1rem; border: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <div>
+            <strong style="display: block; margin-bottom: 0.25rem;">Current Status</strong>
+            <span id="profile-2fa-status" style="color: var(--muted); font-size: 0.9rem;">Checking...</span>
+            <div id="profile-2fa-target" style="margin-top: 0.4rem; font-size: 0.85rem; color: var(--muted); display: none;"></div>
+          </div>
+          <span id="profile-2fa-badge" class="status-badge" style="display: none;"></span>
+        </div>
+
+        <div id="2fa-admin-disabled" style="margin-top: 1rem; padding: 1rem; background: rgba(179, 138, 91, 0.08); border: 1px solid var(--line); display: none;">
+          <p style="font-size: 0.9rem; color: var(--muted);">Email 2FA is currently <strong>disabled</strong> for your account by the admin. Once the admin enables it from the Admin Panel, you'll be able to verify and use it here.</p>
+        </div>
+
+        <div id="2fa-setup" style="margin-top: 1rem; display: none;">
+          <div id="2fa-not-verified" style="padding: 1rem; border: 1px solid var(--line);">
+            <h3 style="font-family: 'TheSeason', serif; font-size: 1.2rem; margin-bottom: 0.4rem;">Verify your email for 2FA</h3>
+            <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Click "Send Code" to receive a 6-digit verification code on your 2FA email.</p>
+            <button id="send-2fa-code" class="btn-primary" style="padding: 0.6rem 1rem;">Send Verification Code</button>
+            <p id="send-2fa-msg" style="margin-top: 0.8rem; font-size: 0.9rem; min-height: 1.2rem;"></p>
+
+            <div id="2fa-code-input-wrap" style="margin-top: 1rem; display: none; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+              <input id="2fa-code-input" type="text" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit code" style="padding: 0.6rem 0.75rem; border: 1px solid var(--line); background: var(--bg); font-family: 'DM', sans-serif; letter-spacing: 0.4rem; text-align: center; width: 180px;">
+              <button id="verify-2fa-code" class="btn-secondary">Verify Code</button>
+              <button id="resend-2fa-code" class="btn-secondary">Resend Code</button>
+            </div>
+            <p id="verify-2fa-msg" style="margin-top: 0.8rem; font-size: 0.9rem; min-height: 1.2rem;"></p>
+            <p style="margin-top: 0.8rem; font-size: 0.8rem; color: var(--muted);">This code expires in 5 minutes. For demo purposes, the code will be shown in a popup when sent.</p>
+          </div>
+
+          <div id="2fa-verified" style="padding: 1rem; border: 1px solid rgba(74, 124, 89, 0.4); background: rgba(74, 124, 89, 0.08); display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <h3 style="font-family: 'TheSeason', serif; font-size: 1.2rem; margin-bottom: 0.4rem;">Email 2FA is Active</h3>
+                <p style="font-size: 0.9rem; color: var(--muted);">Your account is protected with email-based two-factor authentication.</p>
+                <p id="2fa-verified-at" style="margin-top: 0.4rem; font-size: 0.85rem; color: var(--muted);"></p>
+              </div>
+              <button id="disable-2fa" class="btn-danger">Disable Email 2FA</button>
+            </div>
+            <p id="disable-2fa-msg" style="margin-top: 0.8rem; font-size: 0.9rem; min-height: 1.2rem;"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-card" style="margin-top: 1.5rem;" aria-labelledby="orders-title">
+        <p class="eyebrow">Purchase history</p>
+        <h2 id="orders-title" style="font-family: 'TheSeason', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">Your orders</h2>
+        <p class="profile-intro">View your recent orders and their current status.</p>
+        <div id="profile-orders-list" style="margin-top: 1.5rem; display: grid; gap: 0.75rem;"></div>
+        <p id="profile-orders-empty" style="color: var(--muted); font-size: 0.9rem; text-align: center; padding: 2rem; display: none;">No orders yet. Start shopping to see your orders here.</p>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>
